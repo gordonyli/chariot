@@ -1,12 +1,27 @@
 {
-  "name"         : "chariot",
-  "version"      : "0.0.0",
-  "main"         : "server.js",
-  "dependencies" : {
-    "body-parser"    : "^1.4.3",
-    "express"        : "^4.13.4",
+  "name": "chariot",
+  "version": "0.0.0",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.4.3",
+    "bootstrap": "^3.3.7",
+    "express": "^4.13.4",
     "method-override": "^2.1.3",
-    "mongoose"       : "^4.4.12",
-    "morgan"         : "^1.1.1"
-  }
+    "mongoose": "^4.4.12",
+    "morgan": "^1.1.1"
+  },
+  "description": "Chariot Greek Application",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gordonyli@github.com/gordonyli/chariot.git"
+  },
+  "author": "Gordon and Riley",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gordonyli/chariot/issues"
+  },
+  "homepage": "https://github.com/gordonyli/chariot#readme"
 }

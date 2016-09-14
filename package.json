@@ -26,6 +26,7 @@
   "homepage": "https://github.com/gordonyli/chariot#readme",
   "devDependencies": {
     "mysql": "^2.11.1",
+    "node-mysql": "^0.4.2",
     "nodemon": "^1.10.2"
   }
 }

@@ -4,7 +4,7 @@
 
 var myApp = angular.module('myApp',[]);
 
-myApp.controller('homeCtrl', ['$scope', '$http', function($scope, $http) {
+myApp.controller('loginCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.test = "helloasfas";
     $scope.sub = function() {
         console.log("in sub");

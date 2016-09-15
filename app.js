@@ -20,6 +20,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/',function(req,res){
+    res.sendFile('login.html',{'root': __dirname + '/views'});
+})
+
+app.get('/home',function(req,res){
     res.sendFile('home.html',{'root': __dirname + '/views'});
 })
 
@@ -32,12 +36,12 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
-connection.query('select * from users', function(err, rows) {
-    if (!err)
-        console.log('The solution is: ', rows);
-    else
-        console.log('Error while performing Query.');
-});
+// connection.query('select * from users', function(err, rows) {
+//     if (!err)
+//         console.log('The solution is: ', rows);
+//     else
+//         console.log('Error while performing Query.');
+// });
 
 
 app.post('/view1', function(req, res) {
@@ -49,10 +53,9 @@ app.post('/view1', function(req, res) {
             console.log('inserted into users');
         else
             console.log('Error while performing Query.');
-            console.log(err);
     });
     res.end();
 });
 
-connection.end();
+// connection.end();
 

@@ -5,8 +5,8 @@ module.exports = {
     'connection': {
         'host': 'localhost',
         'user': 'root',
-        'password': 'password'
+        'password': 'mysqlpass'
     },
-    'database': 'my_schema',
+    'database': 'Chariot',
     'users_table': 'users'
 };

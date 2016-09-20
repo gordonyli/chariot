@@ -6,8 +6,10 @@ var LocalStrategy   = require('passport-local').Strategy;
 // load up the user model
 var mysql = require('mysql');
 var bcrypt = require('bcrypt-nodejs');
-// var flash = require('connect-flash');
+var dbconfig = require('./database');
+var connection = mysql.createConnection(dbconfig.connection);
 
+connection.query('USE ' + dbconfig.database);
 // expose this function to our app using module.exports
 module.exports = function(passport) {
 
@@ -38,7 +40,6 @@ module.exports = function(passport) {
     passport.use(
         'local-signup',
         new LocalStrategy({
-                // by default, local strategy uses username and password, we will override with email
                 usernameField : 'username',
                 passwordField : 'password',
                 passReqToCallback : true // allows us to pass back the entire request to the callback
@@ -90,18 +91,16 @@ module.exports = function(passport) {
                     if (err)
                         return done(err);
                     if (!rows.length) {
-                        return done(null, false); // req.flash is the way to set flashdata using connect-flash
+                        return done(null, false, req.flash('loginMessage', 'No user found.')); // req.flash is the way to set flashdata using connect-flash
                     }
 
                     // if the user is found but the password is wrong
                     if (!bcrypt.compareSync(password, rows[0].password))
-                        return done(null, false); // create the loginMessage and save it to session as flashdata
+                        return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.')); // create the loginMessage and save it to session as flashdata
 
                     // all is well, return successful user
                     return done(null, rows[0]);
                 });
             })
     );
-};/**
- * Created by gordonli on 9/16/16.
- */
+};

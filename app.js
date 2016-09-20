@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var app      = express();
 var port     = process.env.PORT || 3000;
+var mysql = require('mysql');
 
 var passport = require('passport');
 var flash    = require('connect-flash');

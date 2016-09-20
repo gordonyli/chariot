@@ -52,10 +52,10 @@ module.exports = function(app, passport) {
 
 
     app.get('/login', function (req, res) {
-        res.sendFile(path.resolve("views/login.ejs"));
+        res.sendFile(path.resolve("views/login.html"));
     });
 
     app.get('/home', function (req, res) {
-        res.sendFile(path.resolve("views/home.ejs"));
+        res.sendFile(path.resolve("views/home.html"));
     });
 }

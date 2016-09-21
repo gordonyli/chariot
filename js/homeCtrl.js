@@ -10,7 +10,7 @@ myApp.controller('homeCtrl', ['$scope', '$http', function($scope, $http) {
         console.log("in sub");
         $http.post('/view1',$scope.formData).
         success(function(data) {
-            console.log("posted successfully");
+            console.log(data);
         }).error(function(data) {
             console.error("error in posting");
         })

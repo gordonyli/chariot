@@ -8,7 +8,7 @@ myApp.controller('loginCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.user = {};
     // Register the login() function
     $scope.sub = function() {
-        $http.post('/view1',$scope.formData).
+        $http.post('/signup',$scope.formData).
         success(function(data) {
             console.log("posted successfully");
         }).error(function(data) {

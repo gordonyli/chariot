@@ -45,8 +45,9 @@ connection.connect();
 //         console.log('Error while performing Query.');
 // });
 
-app.post('/view1', function(req, res) {
+app.post('/signup', function(req, res) {
     console.log(req.body);
+    connection.query("insert into users (username,password) values('" + req.body.username + "', '" + req.body.password + "')")
     res.end();
 });
 

@@ -46,8 +46,21 @@ connection.connect();
 // });
 
 app.post('/signup', function(req, res) {
-    console.log(req.body);
-    connection.query("insert into users (username,password) values('" + req.body.username + "', '" + req.body.password + "')")
+    // console.log(req.body);
+    connection.query("insert into users (username,password) values('" + req.body.username + "', '" + req.body.password + "')");
+    res.end();
+});
+
+app.post('/signin', function(req, res) {
+    console.log(req.body.username);
+    connection.query("select * from users where username = '" + req.body.logInusername + "'", function(err, rows) {
+        if(!err) {
+            // console.log("select * from users where username = '" + req.body.username + "'");
+            console.log(rows);
+        } else {
+            console.log(err);
+        }
+    });
     res.end();
 });
 

@@ -8,24 +8,26 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var app = express();
 var mysql = require('mysql');
+var path = require('path');
+
 
 
 app.listen(3000, function() {
     console.log('Node server running @ http://localhost:3000');
 });
 
-app.get('/', function(req, res){
-    res.render('index.html');
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname + '/views/login.html'));
 });
 
 //environments
 app.use('/node_modules',  express.static(__dirname + '/node_modules'));
 app.use('/css',  express.static(__dirname + '/css'));
 app.use('/lib',  express.static(__dirname + '/lib'));
-app.use('/js',  express.static(__dirname + '/js'));
-app.use('/views',  express.static(__dirname + '/views'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.engine('html', require('ejs').renderFile);
+
 
 // database stuff
 

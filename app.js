@@ -45,6 +45,10 @@ connection.connect();
 //         console.log('Error while performing Query.');
 // });
 
+app.post('/view1', function(req, res) {
+    console.log(req.body);
+    res.end();
+});
 
 
 

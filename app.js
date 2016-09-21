@@ -14,6 +14,10 @@ app.listen(3000, function() {
     console.log('Node server running @ http://localhost:3000');
 });
 
+app.get('/', function(req, res){
+    res.render('index.html');
+});
+
 //environments
 app.use('/node_modules',  express.static(__dirname + '/node_modules'));
 app.use('/css',  express.static(__dirname + '/css'));

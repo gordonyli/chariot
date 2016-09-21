@@ -9,6 +9,7 @@ var morgan = require('morgan');
 var app      = express();
 var port     = process.env.PORT || 3000;
 var mysql = require('mysql');
+var path = require('path');
 
 require('./js/routes')(app);
 
@@ -52,11 +53,17 @@ app.post('/signup', function(req, res) {
 });
 
 app.post('/signin', function(req, res) {
-    console.log(req.body.username);
     connection.query("select * from users where username = '" + req.body.logInusername + "'", function(err, rows) {
         if(!err) {
-            // console.log("select * from users where username = '" + req.body.username + "'");
-            console.log(rows);
+            connection.query("select password from users where username = '" + req.body.logInusername + "'", function(err, rows) {
+                var qPass = rows[0].password;
+                if(qPass == req.body.logInpassword) {
+                    console.log('you can login');
+                    res.redirect("views/home.html");
+                } else {
+                    console.log('wrong password');
+                }
+            });
         } else {
             console.log(err);
         }

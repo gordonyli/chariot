@@ -6,15 +6,8 @@ var session  = require('express-session');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
-var app      = express();
-var port     = process.env.PORT || 3000;
+var app = express();
 var mysql = require('mysql');
-
-var passport = require('passport');
-var flash    = require('connect-flash');
-
-require('./js/routes')(app, passport);
-require('./js/passport')(passport); // pass passport for configuration
 
 
 app.listen(3000, function() {
@@ -48,6 +41,11 @@ connection.connect();
 //     else
 //         console.log('Error while performing Query.');
 // });
+
+app.post('/view1', function(req, res) {
+    console.log(req.body);
+    res.end();
+});
 
 
 

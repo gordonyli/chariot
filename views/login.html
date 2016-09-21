@@ -13,21 +13,10 @@
     <script src="../js/loginCtrl.js"></script>
 </head>
 <body ng-controller="loginCtrl">
-    <form action="/login" method="post">
-        <div class="form-group">
-            <label>Username</label>
-            <input type="text" class="form-control" name="username">
-        </div>
-        <div class="form-group">
-            <label>Password</label>
-            <input type="password" class="form-control" name="password">
-        </div>
-        <div class="form-group">
-            <label>Remember Me</label>
-            <input type="checkbox" class="form-control" name="remember" value="yes">
-        </div>
-
-        <button type="submit" class="btn btn-warning btn-lg">Login</button>
+    <form ng-submit="sub()">
+        <input type="text" ng-model="formData.desc" placeholder="Enter desc" />
+        <input type="text" ng-model="formData.title" placeholder="Enter title" />
+        <button type="submit" class="btn btn-primary" ng-click="sub()">Submit</button>
     </form>
 </body>
 </html>

@@ -10,11 +10,7 @@ var app      = express();
 var port     = process.env.PORT || 3000;
 var mysql = require('mysql');
 
-var passport = require('passport');
-var flash    = require('connect-flash');
-
-require('./js/routes')(app, passport);
-require('./js/passport')(passport); // pass passport for configuration
+require('./js/routes')(app);
 
 
 app.listen(3000, function() {

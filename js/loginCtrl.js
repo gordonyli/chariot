@@ -7,11 +7,14 @@ myApp.controller('loginCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.test = "helloasfas";
     $scope.user = {};
     // Register the login() function
-    $scope.login = function(){
-        $http.post('/login', {
-            username: $scope.user.username,
-            password: $scope.user.password
+    $scope.sub = function() {
+        $http.post('/view1',$scope.formData).
+        success(function(data) {
+            console.log("posted successfully");
+        }).error(function(data) {
+            console.error("error in posting");
         })
+    }
 
 }]);
 

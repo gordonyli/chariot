@@ -1,11 +1,13 @@
 // app/routes.js
+var path = require('path');
 module.exports = function(app, passport) {
+
 
     // =====================================
     // HOME PAGE (with login links) ========
     // =====================================
     app.get('/', function(req, res) {
-        res.sendFile('../views/index.html'); // load the index.html file
+        res.sendFile(path.resolve("views/index.html"));
     });
 
     // =====================================
@@ -15,7 +17,7 @@ module.exports = function(app, passport) {
     app.get('/login', function(req, res) {
 
         // render the page and pass in any flash data if it exists
-        res.sendFile('login.html', { message: req.flash('loginMessage') });
+        res.sendFile(path.resolve("views/login.html"));
     });
 
     // process the login form

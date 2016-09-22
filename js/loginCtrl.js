@@ -3,7 +3,13 @@
  */
 
 var myApp = angular.module('myApp',[]);
-myApp.controller('loginCtrl', ['$scope', '$http', function($scope, $http) {
+myApp.config(['$locationProvider', function($locationProvider){
+    $locationProvider.html5Mode(true);
+}]);
+myApp.controller('loginCtrl', ['$scope', '$http', '$window', function($scope, $http, $window) {
     $scope.test = "helloasfas";
+    $scope.go = function ( path ) {
+        $window.location.href = path;
+    };
 }]);
 

@@ -25,7 +25,7 @@ p.form-title
     text-align: center;
     color: #FFFFFF;
     text-transform: uppercase;
-    letter-spacing: 4px;
+    letter-spacing: 10px;
 }
 
 p.home-title
@@ -44,10 +44,21 @@ p.home-title
     color: white;
 }
 
+.register {
+    font-size: 12px;
+    font-weight: 400;
+    color: #FFFFFF;
+}
+
+.col-md-6 {
+    width:33% !important;
+}
+
 form
 {
-    width: 250px;
+    width: 365px;
     margin: 0 auto;
+    text-align: center;
 }
 
 .input-fields {
@@ -100,7 +111,16 @@ form.login .forgot-pass-content
     min-height: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
+    margin-left:3px;
 }
+form.login .register {
+    min-height: 20px;
+    margin-top: 13px;
+    margin-bottom: 10px;
+    font-size: 12.5px;
+}
+
+
 form.login label, form.login a
 {
     font-size: 12px;

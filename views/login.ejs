@@ -2,7 +2,9 @@
 <!doctype html>
 <html ng-app="myApp">
 <head>
-	<title>Node Authentication</title>
+    <base href="/">
+
+    <title>Chariot</title>
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
     <link rel="stylesheet" href="/css/loginstyle.css">
@@ -28,12 +30,11 @@
                 </div>
                 <div class="wrap">
                     <p class="home-title">Chariot</p>
-                    <p class="form-title">Sign In</p>
+                    <!--<p class="form-title">Sign In</p>-->
                     <form action="/login" method="post" class="login">
                         <input type="text" name="username" placeholder="Enter Username">
                         <input type="password" name="password" placeholder="Enter Password">
                         <input type="submit" value="Sign In" class="btn btn-success btn-sm subBut" />
-
                         <div class="remember-forgot">
                             <div class="row">
                                 <div class="col-md-6">
@@ -47,6 +48,10 @@
                                 <div class="col-md-6 forgot-pass-content">
                                     <a href="javascription:void(0)" class="forgot-pass">Forgot Password</a>
                                 </div>
+                                <div class="col-md-6 register">
+                                    <a ng-click="go('signup')">Register</a>
+                                </div>
+
                             </div>
                         </div>
 

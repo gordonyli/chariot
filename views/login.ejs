@@ -3,7 +3,6 @@
 <html ng-app="myApp">
 <head>
     <base href="/">
-
     <title>Chariot</title>
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
@@ -12,14 +11,16 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet">
     <script src="/js/loginCtrl.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
 </head>
 <body ng-controller="loginCtrl">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+
                 <div class="pr-wrap">
                     <div class="pass-reset">
                         <label>
@@ -28,6 +29,22 @@
                         <input type="submit" value="Submit" class="pass-reset-submit btn btn-success btn-sm" />
                     </div>
                 </div>
+
+                <div class="register-acc-wrap">
+                    <div class="register-acc">
+                        <div id="close-reg">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </div>
+                        <form action="/signup" method="post" class="login">
+                            <input type="text" name="username" placeholder="username">
+                            <input type="password" name="password" placeholder="password">
+                            <input type="submit" value="Sign Up" class="btn btn-success btn-sm subBut" />
+                        </form>
+                        <hr>
+                        <p>Already have an account? <a href="/">Login</a></p>
+                    </div>
+                </div>
+
                 <div class="wrap">
                     <p class="home-title">Chariot</p>
                     <!--<p class="form-title">Sign In</p>-->
@@ -49,13 +66,17 @@
                                     <a href="javascription:void(0)" class="forgot-pass">Forgot Password</a>
                                 </div>
                                 <div class="col-md-6 register">
-                                    <a ng-click="go('signup')">Register</a>
+                                    <a class="register-user">Register</a>
                                 </div>
-
                             </div>
                         </div>
-
+                        <div class="wrong-info">
+                            <% if (message.length > 0) { %>
+                            <div class="alert alert-danger wrong-info"><%= message %></div>
+                            <% } %>
+                        </div>
                     </form>
+
                 </div>
             </div>
         </div>
@@ -70,11 +91,15 @@
                 $(".pr-wrap").removeClass("show-pass-reset");
             });
             $('.register-user').click(function(event) {
-                $(".reg-wrap").toggleClass("show-register");
+                $(".register-acc-wrap").toggleClass("show-register");
             });
 
             $('.register-submit').click(function(event) {
-                $(".reg-wrap").removeClass("show-register");
+                $(".register-acc-wrap").removeClass("show-register");
+            });
+
+            $('.fa-times').click(function(event) {
+                $(".register-acc-wrap").removeClass("show-register");
             });
         });
     </script>

@@ -18,6 +18,13 @@ var flash    = require('connect-flash');
 
 require('./config/passport')(passport); // pass passport for configuration
 
+var mysql      = require('mysql');
+var connection = mysql.createConnection({
+    host     : 'localhost',
+    user     : 'root',
+    password : 'mysqlpass',
+    database : 'Chariot'
+});
 
 
 // set up our express application
@@ -47,3 +54,10 @@ require('./app/routes.js')(app, passport); // load our routes and pass in our ap
 // launch ======================================================================
 app.listen(port);
 console.log('The magic happens on port ' + port);
+
+//get and posts
+app.post('/view1', function(req, res) {
+    console.log(req.body.desc);
+    connection.query("SELECT * FROM users");
+    res.end();
+});

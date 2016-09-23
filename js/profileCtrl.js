@@ -1,5 +1,5 @@
 angular.module('demo')
-    .controller('MySidebar', function($scope) {
+    .controller('MySidebar', function($scope, $http) {
         $scope.state = false;
         $scope.menuTitle = "menu";
         $scope.settings = {
@@ -21,5 +21,15 @@ angular.module('demo')
             }
         ];
         $scope.theme = 'white';
+
+        $scope.sub = function() {
+            $http.post('/view1',$scope.formData).
+            success(function(data) {
+                console.log("posted successfully");
+            }).error(function(data) {
+                console.error("error in posting");
+            })
+        }
     });
+
 

@@ -17,14 +17,24 @@ var flash    = require('connect-flash');
 // connect to our database
 
 require('./config/passport')(passport); // pass passport for configuration
-
-var mysql      = require('mysql');
+var mysql = require('mysql');
 var connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
     password : 'mysqlpass',
     database : 'Chariot'
 });
+
+
+connection.connect();
+
+// connection.query('select * from users', function(err, rows) {
+//     if (!err)
+//         console.log('The solution is: ', rows);
+//     else
+//         console.log('Error while performing Query.');
+// });
+
 
 
 // set up our express application
@@ -58,6 +68,13 @@ console.log('The magic happens on port ' + port);
 //get and posts
 app.post('/view1', function(req, res) {
     console.log(req.body.desc);
-    connection.query("SELECT * FROM users");
+    console.log(user.id);
+    connection.query('', function(err, rows) {
+    if (!err)
+        console.log('The solution is: ', rows);
+    else
+        console.log('Error while performing Query.');
+    });
+
     res.end();
 });
